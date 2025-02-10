@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  # Servicio para la aplicación
+  app:
+    build:
+      context: . # Usar el Dockerfile en el directorio actual
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Mapear el puerto 3000 del contenedor al puerto 3000 del host
+    environment:
+      - PORT=3000
+      - JWT_TOKEN_SECRET=token@secret # Secreto para el token JWT
+      - MONGODB_URI=mongodb://mongo:27017/recycling_app # Conexión a MongoDB
+    depends_on:
+      - mongo # Depende del servicio de MongoDB
+
+  # Servicio para MongoDB
+  mongo:
+    image: mongo:6.0 # Usar la imagen oficial de MongoDB
+    ports:
+      - "27017:27017" # Mapear el puerto 27017 del contenedor al puerto 27017 del host
+    volumes:
+      - mongo-data:/data/db # Persistir los datos de MongoDB en un volumen
+
+# Volumen para persistir los datos de MongoDB
+volumes:
+  mongo-data:
