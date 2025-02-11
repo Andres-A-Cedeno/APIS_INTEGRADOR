@@ -8,7 +8,6 @@ Este proyecto es una aplicación backend desarrollada con **Elysia** (un framewo
 
 - [**Documentación de la Aplicación**](#documentación-de-la-aplicación)
   - [**Tabla de Contenidos**](#tabla-de-contenidos)
-  - [**Arbol de la Aplicación**](#arbol-de-la-aplicación)
   - [**Requisitos**](#requisitos)
   - [**Instalación**](#instalación)
   - [**Configuración**](#configuración)
@@ -19,18 +18,6 @@ Este proyecto es una aplicación backend desarrollada con **Elysia** (un framewo
     - [**Comentarios**](#comentarios)
   - [**Dockerización**](#dockerización)
   - [**Contribución**](#contribución)
-
----
-
-## **Arbol de la Aplicación**
-
-El arbol de la aplicación se muestra a continuación:
-
-/proyecto │ ├── src │ ├── controllers │ ├── models │ ├── routes │ ├── utils │ └── index.ts ├── Dockerfile ├── docker-compose.yml ├── package.json ├── bun.lockb ├── .env └── README.md
-
----
-
----
 
 ## **Requisitos**
 
