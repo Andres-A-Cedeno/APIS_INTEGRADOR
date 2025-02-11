@@ -26,20 +26,7 @@ Este proyecto es una aplicación backend desarrollada con **Elysia** (un framewo
 
 El arbol de la aplicación se muestra a continuación:
 
-/proyecto
-│
-├── src
-│   ├── controllers
-│   ├── models
-│   ├── routes
-│   ├── utils
-│   └── index.ts
-├── Dockerfile
-├── docker-compose.yml
-├── package.json
-├── bun.lockb
-├── .env
-└── README.md
+/proyecto │ ├── src │ ├── controllers │ ├── models │ ├── routes │ ├── utils │ └── index.ts ├── Dockerfile ├── docker-compose.yml ├── package.json ├── bun.lockb ├── .env └── README.md
 
 ---
 
