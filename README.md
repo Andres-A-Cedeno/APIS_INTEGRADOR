@@ -8,14 +8,25 @@ Este proyecto es una aplicación backend desarrollada con **Elysia** (un framewo
 
 - [**Documentación de la Aplicación**](#documentación-de-la-aplicación)
   - [**Tabla de Contenidos**](#tabla-de-contenidos)
+  - [**Arbol de la Aplicación**](#arbol-de-la-aplicación)
   - [**Requisitos**](#requisitos)
   - [**Instalación**](#instalación)
   - [**Configuración**](#configuración)
   - [**Uso de la API**](#uso-de-la-api)
     - [**Autenticación**](#autenticación)
+    - [**Inicio de sesión**](#inicio-de-sesión)
+    - [**Recycling Tips**](#recycling-tips)
     - [**Comentarios**](#comentarios)
   - [**Dockerización**](#dockerización)
   - [**Contribución**](#contribución)
+
+---
+
+## **Arbol de la Aplicación**
+
+![Arbol de la Aplicación](https://github.com/Andres-A-Cedeno/APIS_INTEGRADOR/blob/main/git/scm0/output)
+
+---
 
 ---
 
@@ -32,13 +43,9 @@ Este proyecto es una aplicación backend desarrollada con **Elysia** (un framewo
 1. Clona el repositorio:
 
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/Andres-A-Cedeno/APIS_INTEGRADOR.git
    cd tu-repositorio
    ```
-
-   > Nota: Asegúrate de reemplazar `tu-usuario` y `tu-repositorio` con tus respectivos nombres de usuario y repositorio.
-
-   ---
 
 2. Instala las dependencias:
 
@@ -56,7 +63,7 @@ Este proyecto es una aplicación backend desarrollada con **Elysia** (un framewo
 
    ```bash
    open http://localhost:3000
-   ```  
+   ```
 
 ---
 
@@ -71,14 +78,13 @@ JWT_TOKEN_SECRET=mi_secret # Secreto para el token JWT
 ```
 
 > Nota: Asegúrate de reemplazar `tu-base-de-datos` con el nombre de tu base de datos.
-> Nota: Asegúrate de reemplazar `mi_secret` con un secreto aleatorio.
-> Nota: Si esta usando un base de datos de mongo remoto, asegúrate de reemplazar `mongodb://localhost:27017/tu-base-de-datos` con la conexión a tu base de datos. y reemplazar `localhost` con el nombre de tu servidor.
+> Asegúrate de reemplazar `mi_secret` con un secreto aleatorio.
+> Si esta usando un base de datos de mongo remoto, asegúrate de reemplazar `mongodb://localhost:27017/tu-base-de-datos` con la conexión a tu base de datos. y reemplazar `localhost` con el nombre de tu servidor.
 
 ## **Uso de la API**
 
 ### **Autenticación**
 
-**Registro de usuario**
 Para registrarte en la aplicación, debes enviar una solicitud POST a la ruta `/register` con el siguiente cuerpo:
 
 ```json
@@ -98,7 +104,140 @@ Para autenticar a tu aplicación, debes enviar una solicitud POST a la ruta `/lo
 }
 ```
 
+### **Inicio de sesión**
+
+Una vez que hayas registrado y autenticado a tu aplicación, puedes iniciar sesión para acceder a las funcionalidades de la aplicación.
+
+Para iniciar sesión, debes enviar una solicitud POST a la ruta `/login` con el siguiente cuerpo:
+
+```json
+{
+  "email": "tu-correo@ejemplo.com",
+  "password": "tu-contraseña"
+}
+```
+
+Si el inicio de sesión es exitoso, la respuesta de la API devolverá un objeto JSON con el siguiente formato:
+
+```json
+{
+  "message": "Inicio de sesión exitoso",
+  "data": {
+    "token": "tu-token-jwt"
+  }
+}
+```
+
+### **Recycling Tips**
+
+La API de Recycling Tips proporciona una lista de consejos para reducir la cantidad de basura que se produce en el mundo. Cada consejo incluye una descripción detallada, una imagen y una lista de elementos que pueden ser reutilizados o reciclados.
+
+Para obtener todas las consejos, envía una solicitud GET a la ruta `/tips`.
+
+Si la solicitud es exitosa, la respuesta de la API devolverá un objeto JSON con el siguiente formato:
+
+````json
+{
+  "message": "Recycling Tips obtenido correctamente",
+  "recyclingTips": [
+    {
+      "name": "Consejo 1",
+      "description": "Descripción del consejo 1",
+      "image": "https://example.com/imagen.jpg",
+      "details": [
+        {
+          "section": {
+            "title": "Sección 1",
+            "image": "https://example.com/imagen.jpg"
+          },
+          "content": {
+            "description": "Descripción del contenido del consejo 1",
+            "list": [
+              {
+                "title": "Elemento 1",
+                "list_items": [
+                  {
+                    "title": "Elemento de la lista 1",
+                    "item_description": [
+                      "Descripción del elemento de la lista 1"
+                    ]
+                  },
+                  {
+                    "title": "Elemento de la lista 2",
+                    "item_description": [
+                      "Descripción del elemento de la lista 2"
+                    ]
+                  }
+                ]
+              },
+              {
+                "title": "Elemento 2",
+                "list_items": [
+                  {
+                    "title": "Elemento de la lista 1",
+                    "item_description": [
+                      "Descripción del elemento de la lista 1"
+                    ]
+                  },
+                  {
+                    "title": "Elemento de la lista 2",
+                    "item_description": [
+                      "Descripción del elemento de la lista 2"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }, 
+  ]
+}
+````
+
+---
+
 ### **Comentarios**
+
+Para crear un nuevo comentario, debes enviar una solicitud POST a la ruta `/newComment` con el siguiente cuerpo:
+
+```json
+{
+  "author": "Tu nombre",
+  "content": "Tu comentario"
+}
+```
+
+Si la solicitud es exitosa, la respuesta de la API devolverá un objeto JSON con el siguiente formato:
+
+```json
+{
+  "message": "Comentario creado correctamente",
+  "comment": {
+    "author": "Tu nombre",
+    "content": "Tu comentario",
+    "createdAt": "2023-03-01T00:00:00.000Z"
+  }
+}
+```
+
+Para obtener todos los comentarios, envía una solicitud GET a la ruta `/comments`.
+
+Si la solicitud es exitosa, la respuesta de la API devolverá un objeto JSON con el siguiente formato:
+
+```json
+{
+  "message": "Comentarios obtenidos correctamente",
+  "comments": [
+    {
+      "author": "Tu nombre",
+      "content": "Tu comentario",
+      "createdAt": "2023-03-01T00:00:00.000Z"
+    }
+  ]
+}
+```
 
 ---
 
@@ -137,17 +276,17 @@ services:
 # Volumen para persistir los datos de MongoDB
 volumes:
   mongo-data:
-```
+````
 
 ---
 
-2. Ejecutar la aplicación con Docker:
+1. Ejecutar la aplicación con Docker:
 
 ```bash
 docker-compose up -d
 ```
 
-1. Abrir la aplicación en tu navegador:
+1.1 Abrir la aplicación en tu navegador:
 
 ```bash
 open http://localhost:3000
@@ -162,5 +301,3 @@ Si deseas contribuir al proyecto, puedes hacerlo de varias maneras:
 - Reportando errores o sugiriendo mejoras en la documentación.
 - Creando nuevas funcionalidades o mejorando las existentes.
 - Ayudando a traducir la documentación al idioma que prefieras.
-
----
