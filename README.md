@@ -26,14 +26,20 @@ Este proyecto es una aplicación backend desarrollada con **Elysia** (un framewo
 
 El arbol de la aplicación se muestra a continuación:
 
-```mermaid
-graph TD;
-  A[/proyecto] --> B[/register] --> C[/login] --> D[/tips] --> E[/newComment] --> F[/comments]
-  A --> B[Registro]
-  B --> C[Inicio de sesión]
-  C --> D[Recycling Tips]
-  D --> E[Comentarios]
-```
+/proyecto
+│
+├── src
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── utils
+│   └── index.ts
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+├── bun.lockb
+├── .env
+└── README.md
 
 ---
 
