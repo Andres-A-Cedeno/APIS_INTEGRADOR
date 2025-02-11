@@ -16,10 +16,7 @@ interface LoginBody {
 }
 
 // Registrar un nuevo usuario
-export const registerUser = async (
-  { body }: { body: RegisterBody },
-  set: any
-) => {
+export const registerUser = async ({ body, set }: { body: RegisterBody }) => {
   const { name, email, password } = body;
 
   try {
