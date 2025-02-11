@@ -10,8 +10,12 @@ Este proyecto es una aplicación backend desarrollada con **Elysia** (un framewo
   - [**Tabla de Contenidos**](#tabla-de-contenidos)
   - [**Requisitos**](#requisitos)
   - [**Instalación**](#instalación)
+  - [**Configuración**](#configuración)
+  - [**Uso de la API**](#uso-de-la-api)
+    - [**Autenticación**](#autenticación)
+    - [**Comentarios**](#comentarios)
+  - [**Dockerización**](#dockerización)
   - [**Contribución**](#contribución)
-  - [**Licencia**](#licencia)
 
 ---
 
@@ -30,17 +34,69 @@ Este proyecto es una aplicación backend desarrollada con **Elysia** (un framewo
    ```bash
    git clone https://github.com/tu-usuario/tu-repositorio.git
    cd tu-repositorio
+   ```
 
+   > Nota: Asegúrate de reemplazar `tu-usuario` y `tu-repositorio` con tus respectivos nombres de usuario y repositorio.
+
+   ---
+
+2. Instala las dependencias:
+
+   ```bash
+   bun install
+   ```
+
+3. Ejecuta la aplicación:
+
+   ```bash
+   bun run src/index.ts
+   ```
+
+4. Abre la aplicación en tu navegador:
+
+   ```bash
+   open http://localhost:3000
+   ```  
+
+---
 
 ## **Configuración**
 
-### **Variables de entorno**
+Crea un archivo `.env` en la raíz del proyecto con las siguientes variables de entorno:
 
-### **Requerimientos**
+```bash
+PORT=3000 # Puerto de la aplicación
+MONGODB_URI=mongodb://localhost:27017/tu-base-de-datos # Conexión a MongoDB
+JWT_TOKEN_SECRET=mi_secret # Secreto para el token JWT
+```
+
+> Nota: Asegúrate de reemplazar `tu-base-de-datos` con el nombre de tu base de datos.
+> Nota: Asegúrate de reemplazar `mi_secret` con un secreto aleatorio.
+> Nota: Si esta usando un base de datos de mongo remoto, asegúrate de reemplazar `mongodb://localhost:27017/tu-base-de-datos` con la conexión a tu base de datos. y reemplazar `localhost` con el nombre de tu servidor.
 
 ## **Uso de la API**
 
 ### **Autenticación**
+
+**Registro de usuario**
+Para registrarte en la aplicación, debes enviar una solicitud POST a la ruta `/register` con el siguiente cuerpo:
+
+```json
+{
+  "name": "Tu nombre",
+  "email": "tu-correo@ejemplo.com",
+  "password": "tu-contraseña"
+}
+```
+
+Para autenticar a tu aplicación, debes enviar una solicitud POST a la ruta `/login` con el siguiente cuerpo:
+
+```json
+{
+  "email": "tu-correo@ejemplo.com",
+  "password": "tu-contraseña"
+}
+```
 
 ### **Comentarios**
 
@@ -107,10 +163,4 @@ Si deseas contribuir al proyecto, puedes hacerlo de varias maneras:
 - Creando nuevas funcionalidades o mejorando las existentes.
 - Ayudando a traducir la documentación al idioma que prefieras.
 
-Si deseas contribuir de manera significativa, por favor, lea el siguiente documento: [CONTRIBUTING.md](https://github.com/tu-usuario/tu-repositorio/blob/main/CONTRIBUTING.md).
-
 ---
-
-## **Licencia**
-
-Este proyecto está licenciado bajo la licencia MIT. Puedes encontrar más información sobre la licencia en el archivo [LICENSE](https://github.com/tu-usuario/tu-repositorio/blob/main/LICENSE).
