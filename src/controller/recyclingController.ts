@@ -12,7 +12,7 @@ export const getAllRecyclingTips = async (ctx: Context) => {
     console.error("Error al obtener los Recycling Tips:", err);
 
     ctx.set.status = 500;
-    return { message: err.message };
+    return { message: "Error al obtener los Recycling Tips" };
   }
 };
 

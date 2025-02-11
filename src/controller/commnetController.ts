@@ -1,12 +1,11 @@
 import { Context } from "elysia";
-import { Comment } from "../models/commentModel"; // Importar el modelo de comentarios
+import { Comment } from "../models/commentModel";
 
 // Crear un nuevo comentario
 export const createComment = async (ctx: Context) => {
   try {
     const { author, content } = ctx.body as { author: string; content: string };
 
-    // Validar que se proporcionen el autor y el contenido
     if (!author || !content) {
       ctx.set.status = 400;
       return { message: "El autor y el contenido son obligatorios" };
@@ -29,7 +28,6 @@ export const createComment = async (ctx: Context) => {
 // Obtener todos los comentarios
 export const getAllComments = async (ctx: Context) => {
   try {
-    // Obtener todos los comentarios de la base de datos
     const comments = await Comment.find();
 
     ctx.set.status = 200;
